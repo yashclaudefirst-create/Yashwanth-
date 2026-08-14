@@ -39,6 +39,7 @@ const $ = (id) => document.getElementById(id);
 const canvas = $('tree');
 const ctx    = canvas.getContext('2d');
 const wishEl = $('wish');
+const polaroidEl = $('polaroid');
 
 const hero       = $('hero');
 const eyebrow    = $('eyebrow');
@@ -475,7 +476,10 @@ function drawRested(){
   for (const r of rested) drawSprite(SPR.crisp[r.idx], r.x, r.y, r.box, r.rot, r.a);
 }
 
-function showWish(on){ wishEl.classList.toggle('is-in', on); }
+function showWish(on){
+  wishEl.classList.toggle('is-in', on);
+  if (polaroidEl) polaroidEl.classList.toggle('is-in', on);
+}
 
 /* the tree's own rAF: plays once from treeStart(), then holds, living */
 let treeStartT = 0, treeLastT = 0, treeRAF = 0, lastPetal = 0, replayArmed = false;

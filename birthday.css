@@ -455,6 +455,77 @@ body{
 }
 
 /* ============================================================
+   POLAROID WISH PHOTO CARD
+   ============================================================ */
+.polaroid {
+  position: absolute;
+  right: 5.5%;
+  bottom: 12%;
+  z-index: 6;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(24px) rotate(4deg);
+  transition: opacity 1s ease, transform 1.2s var(--ease-out), filter 1s ease;
+  filter: blur(5px);
+}
+.polaroid.is-in {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0) rotate(4deg);
+  filter: blur(0);
+  transition-delay: 1.75s;
+}
+.polaroid__frame {
+  background: #ffffff;
+  padding: 12px 12px 24px 12px;
+  border-radius: 4px;
+  box-shadow: 0 15px 35px rgba(120, 20, 50, 0.25), 0 3px 10px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  width: clamp(140px, 18vw, 220px);
+  aspect-ratio: 1 / 1.22;
+  display: flex;
+  flex-direction: column;
+}
+.polaroid__img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+.polaroid__caption {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(20px, 3.8vw, 28px);
+  color: #5a2c3a;
+  text-align: center;
+  margin-top: 10px;
+}
+
+@media (max-width: 640px) {
+  .wish {
+    max-width: 52%;
+    bottom: 8%;
+    left: 4%;
+  }
+  .polaroid {
+    right: 4%;
+    bottom: 8%;
+    transform: translateY(24px) rotate(-3deg);
+  }
+  .polaroid.is-in {
+    transform: translateY(0) rotate(-3deg);
+  }
+  .polaroid__frame {
+    width: clamp(100px, 32vw, 135px);
+    padding: 8px 8px 16px 8px;
+  }
+  .polaroid__caption {
+    font-size: 16px;
+    margin-top: 6px;
+  }
+}
+
+/* ============================================================
    REDUCED MOTION — skip the film, hand over the finished tree
    ============================================================ */
 @media (prefers-reduced-motion: reduce){
@@ -464,4 +535,5 @@ body{
   .wish.is-in .wish__hero{ animation:none; }
   .wish.is-in .wish__heroWrap::before{ animation:none; opacity:.9; }
   .wish.is-in .wish__heroWrap::after{ animation:none; opacity:0; }
+  .polaroid { opacity: 1; transform: rotate(4deg); filter: none; transition: none; visibility: visible; }
 }

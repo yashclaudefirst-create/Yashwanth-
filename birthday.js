@@ -534,21 +534,9 @@ function drawFinal(){
    ACTS 1–3 (GSAP) — the bow, the shot, the wish
    ============================================================ */
 
-/* the two headline words become per-glyph spans so each hinges up on its own */
-function splitWord(el){
-  const chars = [...el.textContent];
-  el.textContent = '';
-  return chars.map((c) => {
-    const s = document.createElement('span');
-    s.className = 'hl__ch';
-    s.textContent = c === ' ' ? ' ' : c;
-    el.appendChild(s);
-    return s;
-  });
-}
-const line1Chars = splitWord($('wLine1'));
-const line2Chars = splitWord($('wLine2'));
-const kChars = [...line1Chars, ...line2Chars];
+/* Act 3's centrepiece photo, revealed with a soft rise + scale (in place of
+   the old per-glyph "Happy Birthday" headline). */
+const wishPhoto = $('wishPhoto');
 
 /* drifting light motes behind the scene */
 function buildMotes(){
@@ -726,7 +714,7 @@ function buildFilm(m){
    .set(barBot, { yPercent: 100 })
    .set(kEyebrow, { opacity: 0, y: 12 })
    .set(kSub, { opacity: 0, y: 12 })
-   .set(kChars, { transformPerspective: 620, transformOrigin: '50% 100%', yPercent: 135, rotationX: -82 })
+   .set(wishPhoto, { opacity: 0, y: 26, scale: 0.88 })
    .set(uline, { drawn: 0 });
 
   // --- the shot: string snaps (twang), arrow flies up into the heart --------
@@ -782,8 +770,7 @@ function buildFilm(m){
 
   // --- the kinetic wish ------------------------------------------------------
   t.to(kEyebrow, { opacity: 1, y: 0, duration: 0.45, ease: 'power3.out' }, 1.54)
-   .to(line1Chars, { yPercent: 0, rotationX: 0, duration: 0.55, ease: 'power3.out', stagger: 0.033 }, 1.68)
-   .to(line2Chars, { yPercent: 0, rotationX: 0, duration: 0.55, ease: 'power3.out', stagger: 0.033 }, 2.06)
+   .to(wishPhoto, { opacity: 1, y: 0, scale: 1, duration: 0.85, ease: 'power3.out' }, 1.68)
    .to(uline, { drawn: 1, duration: 0.45, ease: 'power2.inOut' }, 2.54)
    .to(kSub, { opacity: 1, y: 0, duration: 0.45, ease: 'power3.out' }, 2.74);
 

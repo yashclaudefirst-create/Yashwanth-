@@ -269,25 +269,33 @@ body{
   margin-bottom:clamp(2px,1vh,10px);
 }
 
-.headline{ font-family:"Fraunces", Georgia, serif; line-height:.92; }
-.hl__line{ display:block; }
-/* the mask each headline word hinges out of. Padded to clear ascenders +
-   descenders so glyphs never peek past the clip edge when parked. */
-.mask{
-  display:inline-block; overflow:hidden;
-  padding:.14em .06em;
-  margin:-.14em -.06em;
+/* ---- the centrepiece photo (replaces the old "Happy Birthday" headline) ---- */
+.wishPhoto{
+  width:min(58vw, 300px);
+  aspect-ratio:4/5;
+  will-change:transform, opacity;
 }
-.hl__word{
-  display:inline-block;
-  font-weight:900;
-  font-size:clamp(52px, 15vw, 168px);
-  letter-spacing:-.02em;
-  color:#fff6f1;
-  text-shadow:0 6px 34px rgba(60,4,24,.34), 0 2px 3px rgba(90,8,36,.42);
+.wishPhoto__frame{
+  position:relative;
+  width:100%; height:100%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:clamp(6px,1.6vh,14px);
+  border-radius:16px;
+  background:linear-gradient(160deg, rgba(255,255,255,.18), rgba(255,255,255,.05));
+  border:2px solid rgba(255,255,255,.55);
+  box-shadow:0 20px 44px -16px rgba(20,2,10,.55), 0 2px 6px rgba(0,0,0,.22);
+  overflow:hidden;
 }
-/* each glyph hinges up on its own bottom edge, under its own perspective */
-.hl__ch{ display:inline-block; will-change:transform; }
+.wishPhoto__icon{ width:17%; height:auto; color:#fff; opacity:.7; }
+.wishPhoto__label{
+  font-family:"Cormorant Garamond", Georgia, serif;
+  font-style:italic;
+  font-size:clamp(12px, 3vw, 16px);
+  letter-spacing:.04em;
+  color:rgba(255,255,255,.78);
+}
+/* once a real photo replaces the placeholder markup, this fills the frame */
+.wishPhoto__img{ width:100%; height:100%; object-fit:cover; display:block; }
 
 /* gold hand-drawn underline under the second word */
 .uline{

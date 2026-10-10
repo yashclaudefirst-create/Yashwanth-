@@ -714,7 +714,7 @@ function buildFilm(m){
    .set(barBot, { yPercent: 100 })
    .set(kEyebrow, { opacity: 0, y: 12 })
    .set(kSub, { opacity: 0, y: 12 })
-   .set(wishPhoto, { opacity: 0, y: 26, scale: 0.88 })
+   .set(wishPhoto, { opacity: 0, y: 26, scale: 0.88, rotation: -3 })
    .set(uline, { drawn: 0 });
 
   // --- the shot: string snaps (twang), arrow flies up into the heart --------
@@ -770,7 +770,7 @@ function buildFilm(m){
 
   // --- the kinetic wish ------------------------------------------------------
   t.to(kEyebrow, { opacity: 1, y: 0, duration: 0.45, ease: 'power3.out' }, 1.54)
-   .to(wishPhoto, { opacity: 1, y: 0, scale: 1, duration: 0.85, ease: 'power3.out' }, 1.68)
+   .to(wishPhoto, { opacity: 1, y: 0, scale: 1, rotation: -3, duration: 0.85, ease: 'power3.out' }, 1.68)
    .to(uline, { drawn: 1, duration: 0.45, ease: 'power2.inOut' }, 2.54)
    .to(kSub, { opacity: 1, y: 0, duration: 0.45, ease: 'power3.out' }, 2.74);
 
